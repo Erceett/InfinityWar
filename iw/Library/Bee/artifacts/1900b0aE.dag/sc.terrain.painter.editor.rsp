@@ -109,6 +109,7 @@
 -define:ENABLE_TERRAIN
 -define:ENABLE_TILEMAP
 -define:ENABLE_TIMELINE
+-define:ENABLE_INPUT_SYSTEM
 -define:ENABLE_LEGACY_INPUT_MANAGER
 -define:TEXTCORE_FONT_ENGINE_1_5_OR_NEWER
 -define:CSHARP_7_OR_LATER
@@ -342,10 +343,10 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.TestRunner.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
-"Assets/ProceduralTerrainPainter/Editor/HeatmapPreview.cs"
-"Assets/ProceduralTerrainPainter/Editor/ModifierEditor.cs"
-"Assets/ProceduralTerrainPainter/Editor/PropertyDrawers.cs"
-"Assets/ProceduralTerrainPainter/Editor/TerrainPainterInspector.cs"
+"Assets/Store/ProceduralTerrainPainter/Editor/HeatmapPreview.cs"
+"Assets/Store/ProceduralTerrainPainter/Editor/ModifierEditor.cs"
+"Assets/Store/ProceduralTerrainPainter/Editor/PropertyDrawers.cs"
+"Assets/Store/ProceduralTerrainPainter/Editor/TerrainPainterInspector.cs"
 -langversion:9.0
 
 /deterministic

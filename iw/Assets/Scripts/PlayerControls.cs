@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
+using Unity.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -11,7 +12,11 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] float speed = 1f;
     [SerializeField] float xRange = 5f;
     [SerializeField] float yRange = 5f;
-    [SerializeField] float positionPitchFactor = -2f;
+
+    [SerializeField] float positionFactor = -2f;
+    [SerializeField] float controlFactor = -15f;
+
+    float xThrow, yThrow;
 
     void Update()
     {
@@ -21,22 +26,21 @@ public class PlayerControls : MonoBehaviour
 
     private void ProcessRotation()
     {
-        float pitch = transform.localPosition.y * positionPitchFactor;
-        float yaw = transform.localPosition.x * positionPitchFactor;
-        float zRotation = 0f;
-        
+        float pitch = transform.localPosition.y * positionFactor + yThrow * controlFactor;
+        float yaw = transform.localPosition.x * -positionFactor;
+        float roll = xThrow * controlFactor;
 
-        transform.localRotation = Quaternion.Euler(pitch, yaw, zRotation);
+        transform.localRotation = Quaternion.Euler(pitch, yaw, roll);
     }
 
     private void ProcessTranslation()
     {
-        float xThrow = Input.GetAxis("Horizontal");
+        xThrow = Input.GetAxis("Horizontal");
         float xOffset = xThrow * Time.deltaTime * speed;
         float newXPos = transform.localPosition.x + xOffset;
         float clampedXPoss = Mathf.Clamp(newXPos, -xRange, xRange);
 
-        float yThrow = Input.GetAxis("Vertical");
+        yThrow = Input.GetAxis("Vertical");
         float yOffset = yThrow * Time.deltaTime * speed;
         float newYPos = transform.localPosition.y + yOffset;
         float clampedYPoss = Mathf.Clamp(newYPos, -yRange, yRange);
